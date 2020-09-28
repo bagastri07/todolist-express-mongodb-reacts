@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const passport = require('passport');
 require('dotenv').config()
 
 const port = 4000;
@@ -28,9 +29,14 @@ app.use(
       secret: process.env.SECRET,
       resave: true,
       saveUninitialized: true,
+      cookie : {
+        maxAge : 4 * 60 * 60 * 1000
+      }
     })
   );
 app.use(cookieParser(process.env.SECRET));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Routes
 app.use(require('./routes/main/User'))
