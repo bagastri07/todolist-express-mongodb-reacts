@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 require('../../passport-config/passport-config')(passport);
 
 router.get('/', (req, res) => {
-    res.send(req.user);
+    res.json({user: req.user, message: 'welcome to API'});
 });
 
 router.post('/login', (req, res, next) => {
