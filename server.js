@@ -42,5 +42,5 @@ app.use(passport.session());
 app.use(require('./routes/main/User'))
 
 app.listen(port, () => {
-    console.log("Listening to port: " + port);
+    console.log("Server is running at port: " + port);
 })
